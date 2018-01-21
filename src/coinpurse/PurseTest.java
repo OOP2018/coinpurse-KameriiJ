@@ -131,6 +131,7 @@ public class PurseTest {
 			assertSame(  coin, result[0] ); // should be same object
 			assertEquals( 0, purse.getBalance(), TOL );
 		}
+		
 	}
 	
 
