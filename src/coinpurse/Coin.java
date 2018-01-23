@@ -8,15 +8,28 @@ public class Coin implements Comparable<Coin>{
 	private double value;
 	private String currency;
 	
+	/**
+	 * Create a coin with value and currency.
+	 * @param value is value of a coin.
+	 * @param currency is currency of a coin.
+	 */
 	public Coin(double value, String currency) {
 		this.value = value;
 		this.currency = currency;
 	}
 	
+	/**
+	 * Get the total value of a coin.
+	 * @return the total value of a coin.
+	 */
 	public double getValue() {
 		return this.value;
 	}
 	
+	/**
+	 * Get the currency of a coin.
+	 * @return the currency of a coin.
+	 */
 	public String getCurrency() {
 		return this.currency;
 	}
@@ -30,6 +43,10 @@ public class Coin implements Comparable<Coin>{
 		return ((other.getCurrency().equals(this.getCurrency()))&&(other.getValue() == this.getValue()));
 	}
 	
+	/**
+	 * Order value of coins in the list.(smaller to bigger)
+	 * @param coin
+	 **/
 	public int compareTo(Coin coin) {
 		if (this.getValue() > coin.getValue()) return 1;
 		else if (this.getValue() < coin.getValue()) return -1;
