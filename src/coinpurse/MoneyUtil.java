@@ -34,7 +34,6 @@ public class MoneyUtil {
 		for(Coin x : coins) {
 			if(x.getCurrency().toLowerCase().equals(currency.toLowerCase())) {
 				sameCurrencyList.add(x);
-				System.out.println(x.toString());
 			}
 		}
 		return sameCurrencyList;
@@ -68,5 +67,6 @@ public class MoneyUtil {
 		
 		System.out.println("\nTest filterByCurrency(): ");
 		List<Coin> testFilterCurrency = filterByCurrency(coins, "Dollars");
+		printCoins(testFilterCurrency);
 	}
 }
