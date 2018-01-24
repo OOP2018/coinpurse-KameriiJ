@@ -21,6 +21,23 @@ public class MoneyUtil {
 	}
 	
 	/**
+	 * Build new List that contains only the coins from coins 
+	 * that have same currency as the currency parameter.
+	 * 
+	 * @param coins
+	 * @param currency
+	 * @return a list of Coins that contains only the coins from coins 
+	 * 		   that have same currency as the currency parameter
+	 */
+	public static List<Coin> filterByCurrency(List<Coin> coins, String currency){
+		List<Coin> sameCurrencyList = new ArrayList<Coin>(coins.size());
+		for(Coin x : coins) {
+			if(x.getCurrency().equals(currency)) sameCurrencyList.add(x);
+		}
+		return sameCurrencyList;
+	}
+	
+	/**
 	 * Print all coins in the list.
 	 * @param coins
 	 */
