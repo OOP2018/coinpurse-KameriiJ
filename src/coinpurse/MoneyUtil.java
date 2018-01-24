@@ -32,7 +32,10 @@ public class MoneyUtil {
 	public static List<Coin> filterByCurrency(List<Coin> coins, String currency){
 		List<Coin> sameCurrencyList = new ArrayList<Coin>(coins.size());
 		for(Coin x : coins) {
-			if(x.getCurrency().equals(currency)) sameCurrencyList.add(x);
+			if(x.getCurrency().toLowerCase().equals(currency.toLowerCase())) {
+				sameCurrencyList.add(x);
+				System.out.println(x.toString());
+			}
 		}
 		return sameCurrencyList;
 	}
@@ -53,10 +56,17 @@ public class MoneyUtil {
 		coins.add(new Coin(200, "Coins"));
 		coins.add(new Coin(30, "Rupie"));
 		coins.add(new Coin(10, "Dollars"));
+		coins.add(new Coin(0.5, "Dollars"));
+		coins.add(new Coin(1, "Dollars"));
+		coins.add(new Coin(2, "Dollars"));
 		
+		System.out.println("List of coins:");
 		printCoins(coins);
-		System.out.println();
+		System.out.println("\nSort coins:");
 		sortCoins(coins);
 		printCoins(coins);
+		
+		System.out.println("\nTest filterByCurrency(): ");
+		List<Coin> testFilterCurrency = filterByCurrency(coins, "Dollars");
 	}
 }
