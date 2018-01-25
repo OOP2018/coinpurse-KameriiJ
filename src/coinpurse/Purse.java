@@ -37,10 +37,7 @@ public class Purse {
 	 * @return the number of coins in the purse
 	 */
 	public int count() {
-		int count = 0;
-		for (Coin x : money)
-			if (x.getValue() > 0) count++;
-		return count;
+		return this.money.size();
 	}
 
 	/**
@@ -51,7 +48,7 @@ public class Purse {
 	public double getBalance() {
 		double totalValue = 0;
 		for (Coin x : money) {
-			if (x.getValue() > 0) totalValue += x.getValue();
+			totalValue += x.getValue();
 		}
 		return totalValue;
 	}
