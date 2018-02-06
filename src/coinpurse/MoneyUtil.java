@@ -29,9 +29,9 @@ public class MoneyUtil {
 	 * @return a list of Coins that contains only the coins from coins 
 	 * 		   that have same currency as the currency parameter
 	 */
-	public static List<Coin> filterByCurrency(List<Coin> coins, String currency){
-		List<Coin> sameCurrencyList = new ArrayList<Coin>(coins.size());
-		for(Coin x : coins) {
+	public static List<Valuable> filterByCurrency(List<Valuable> coins, String currency){
+		List<Valuable> sameCurrencyList = new ArrayList<Valuable>(coins.size());
+		for(Valuable x : coins) {
 			if(x.getCurrency().toLowerCase().equals(currency.toLowerCase())) {
 				sameCurrencyList.add(x);
 			}
