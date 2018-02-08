@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * A coin purse contains coins or banknotes. You can insert coins or banknotes, withdraw money, check the
+ * A coin purse contains Valuable items(coins or banknotes). You can insert Valuable item, withdraw money, check the
  * balance, and check if the purse is full.
  * 
  * @author Gunthee Taweatmongkol
@@ -23,8 +23,7 @@ public class Purse {
 	/**
 	 * Create a purse with a specified capacity.
 	 * 
-	 * @param capacity
-	 *            is maximum number of coins and banknotes you can put in purse.
+	 * @param capacity is maximum number of Valuable items you can put in purse.
 	 */
 	public Purse(int capacity) {
 		this.capacity = capacity;
@@ -32,10 +31,10 @@ public class Purse {
 	}
 
 	/**
-	 * Count and return the number of coins and banknotes in the purse. 
-	 * This is the number of coins and banknotes, not their value.
+	 * Count and return the number of Valuable items in the purse. 
+	 * This is the number of Valuable items, not their value.
 	 * 
-	 * @return the number of coins in the purse
+	 * @return the number of Valuable items in the purse
 	 */
 	public int count() {
 		return this.money.size();
@@ -74,11 +73,11 @@ public class Purse {
 	}
 
 	/**
-	 * Insert a coin or banknote into the purse. The coin or banknote is only inserted if the purse has
-	 * space for it and the coin or banknote has positive value. No worthless coins or banknotes!
+	 * Insert a Valuable item into the purse. The Valuable item is only inserted if the purse has
+	 * space for it and the Valuable item has positive value. No worthless Valuable item!
 	 * 
-	 * @param cash is a Coin or BankNote object to insert into purse
-	 * @return true if coin or bonknote inserted, false if can't insert
+	 * @param cash is a Valuable items object to insert into purse
+	 * @return true if Valuable item inserted, false if can't insert
 	 */
 	public boolean insert(Valuable cash) {
 		if ((isFull()) || (cash.getValue() <= 0)) return false;
@@ -87,7 +86,7 @@ public class Purse {
 	}
 
 	/**
-	 * Withdraw the requested amount of money. Return an array of Coins or/and Banknotes(Valuable) withdrawn
+	 * Withdraw the requested amount of money. Return an array of Valuable items withdrawn
 	 * from purse, or return null if cannot withdraw the amount requested.
 	 * 
 	 * @param amount is the amount to withdraw
