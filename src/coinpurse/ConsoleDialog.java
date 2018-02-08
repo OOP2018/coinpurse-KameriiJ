@@ -82,7 +82,7 @@ public class ConsoleDialog {
         Scanner scanline = new Scanner(inline);
         while( scanline.hasNextDouble() ) {
             double value = scanline.nextDouble();
-            if(value > 20) {
+            if(value >= 20) {
             	 	BankNote bankNote = new BankNote(value, CURRENCY);
             	 	System.out.printf("Deposit %s... ", bankNote.toString() );
             		boolean ok = purse.insert(bankNote);
