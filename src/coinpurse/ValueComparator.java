@@ -15,13 +15,16 @@ public class ValueComparator implements Comparator<Valuable> {
 			String currentA = a.getCurrency().toLowerCase();
 			String currentB = b.getCurrency().toLowerCase();
 			int length = Math.min(currentA.length(), currentB.length());
-			
+			int chaA = 0,chaB = 0;
 			for (int x = 0; x < length; x++) {
-				int chaA = currentA.charAt(x);
-				int chaB = currentB.charAt(x);
-				
+				chaA = currentA.charAt(x);
+				chaB = currentB.charAt(x);
 				if (chaA < chaB) return -1;
 				else if (chaA > chaB) return 1;
+			}
+			if(chaA == chaB && currentA.length() != currentB.length()) {
+				if (currentA.length() < currentB.length()) return -1;
+				else return 1;
 			}
 		}
 		else {
