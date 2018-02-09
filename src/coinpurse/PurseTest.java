@@ -38,6 +38,10 @@ public class PurseTest {
     private Coin makeCoin(double value) {
 		return new Coin(value,CURRENCY);
 	}
+    
+    private BankNote makeBank(double value) {
+		return new BankNote(value,CURRENCY);
+	}
 
     /** Easy test that the Purse constructor is working. */
     @Test
@@ -65,6 +69,17 @@ public class PurseTest {
         assertEquals( 3, purse.count() );
         // purse is full so insert should fail
         assertFalse( purse.insert(makeCoin(1)) );
+        
+        Purse purseBank = new Purse(3);
+        BankNote bank1 = makeBank(20);
+        BankNote bank2 = makeBank(50);
+        BankNote bank3 = makeBank(100);
+        assertTrue( purseBank.insert(bank1));
+        assertTrue( purseBank.insert(bank2));
+        assertTrue( purseBank.insert(bank3));
+        assertEquals( 3, purseBank.count() );
+        // purse is full so insert should fail
+        assertFalse( purseBank.insert(makeBank(500)) );
     }
 
 
@@ -122,16 +137,17 @@ public class PurseTest {
 		double [] values = {1, 20, 0.5, 10}; // values of coins we will insert
 		
 		for(double value : values) {
-			Coin coin = makeCoin(value);
-			assertTrue(purse.insert(coin));
+			Valuable cash = null;
+			if(value < 20) cash = makeCoin(value);
+			else cash = makeBank(value);
+			assertTrue(purse.insert(cash));
 			assertEquals(value,  purse.getBalance(), TOL);
-			Coin [] result = (Coin[]) purse.withdraw(value);
+			Valuable [] result = (Valuable[]) purse.withdraw(value);
 			assertTrue( result != null );
 			assertEquals( 1, result.length );
-			assertSame(  coin, result[0] ); // should be same object
+			assertSame(  cash, result[0] ); // should be same object
 			assertEquals( 0, purse.getBalance(), TOL );
 		}
-		
 	}
 	
 

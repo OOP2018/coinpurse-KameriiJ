@@ -39,6 +39,10 @@ public class Purse {
 	public int count() {
 		return this.money.size();
 	}
+	
+	public List<Valuable> getMoney(){
+		return this.money;
+	}
 
 	/**
 	 * Get the total value of all items in the purse.
@@ -47,7 +51,7 @@ public class Purse {
 	 */
 	public double getBalance() {
 		double totalValue = 0;
-		for (Valuable x : money) {
+		for (Valuable x : this.money) {
 			totalValue += x.getValue();
 		}
 		return totalValue;
@@ -99,7 +103,7 @@ public class Purse {
 		Valuable[] withdraw = null;
 		Comparator<Valuable> comp = new ValueComparator();
 		java.util.Collections.sort(this.money, comp);
-
+		
 		if ((amount <= 0) || (this.getBalance() < amount)) {
 			return null;
 		} else {
@@ -107,7 +111,7 @@ public class Purse {
 				double value = this.money.get(x).getValue();
 				if ((amountNeededToWithdraw - value) >= 0) {
 					amountNeededToWithdraw -= value;
-					templist.add((Valuable) this.money.get(x));
+					templist.add(this.money.get(x));
 				}
 				if (amountNeededToWithdraw == 0) {
 					withdraw = new Valuable[templist.size()];
