@@ -89,7 +89,7 @@ public class ConsoleDialog {
             		System.out.println( (ok? "ok" : "FAILED") );
             }
             else {
-            		Coin coin = makeMoney(value);
+            		Money coin = makeMoney(value);
             		System.out.printf("Deposit %s... ", coin.toString() );
             		boolean ok = purse.insert(coin);
             		System.out.println( (ok? "ok" : "FAILED") );
@@ -132,7 +132,7 @@ public class ConsoleDialog {
     }
     
     /** Make a Coin (or BankNote or whatever) using requested value. */
-    private Coin makeMoney(double value) {
+    private Money makeMoney(double value) {
     	return new Coin(value, CURRENCY);
     }
 
