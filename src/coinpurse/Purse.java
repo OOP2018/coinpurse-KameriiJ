@@ -123,11 +123,52 @@ public class Purse {
 				}
 			}
 		}
-		
 		if (amountNeededToWithdraw != 0) {
 			return null;
 		}
+		return withdraw;
+	}
+	
+	/**
+	 * Withdraw the requested amount of money. Return an array of Valuable items withdrawn
+	 * from purse, or return null if cannot withdraw the amount requested.
+	 * Using only items that have the same currency as the parameter.
+	 * 
+	 * @param amount is the object of amount to withdraw
+	 * @return array of Valuable objects for money withdrawn, or null if cannot withdraw
+	 *         requested amount.
+	 */
+	public Valuable[ ] withdraw(Valuable amount) {
+		List<Valuable> templist = new ArrayList<Valuable>(this.money.size());
+		double amountNeededToWithdraw = amount.getValue();
+		Valuable[] withdraw = null;
+		Comparator<Valuable> comp = new ValueComparator();
+		java.util.Collections.sort(this.money, comp);
 		
+		if ((amount.getValue() <= 0) || (this.getBalance() < amount.getValue()) || amount == null) {
+			return null;
+		} else {
+			for (int x = (this.money.size() - 1); x >= 0; x--) {
+				if(this.money.get(x).getCurrency().equalsIgnoreCase(amount.getCurrency())) {
+					double value = this.money.get(x).getValue();
+					if ((amountNeededToWithdraw - value) >= 0) {
+						amountNeededToWithdraw -= value;
+						templist.add(this.money.get(x));
+					}
+					if (amountNeededToWithdraw == 0) {
+						withdraw = new Valuable[templist.size()];
+						templist.toArray(withdraw);
+						for (Valuable j : templist) {
+							this.money.remove(j);
+						}
+						break;
+					}
+				}
+			}
+		}
+		if (amountNeededToWithdraw != 0) {
+			return null;
+		}
 		return withdraw;
 	}
 
