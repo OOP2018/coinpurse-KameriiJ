@@ -14,9 +14,7 @@ public class ValueComparator implements Comparator<Valuable> {
 		String currentA = a.getCurrency().toLowerCase();
 		String currentB = b.getCurrency().toLowerCase();
 		if(!currentA.equals(currentB)) {
-			if(currentA.compareTo(currentB) < 0) return -1;
-			else if(currentA.compareTo(currentB) > 0) return 1;
-			else return 0;
+			return currentA.compareTo(currentB);
 		}
 		else {
 			return Double.compare(a.getValue(), b.getValue());
