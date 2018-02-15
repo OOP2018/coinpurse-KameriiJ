@@ -98,35 +98,7 @@ public class Purse {
 	 *         requested amount.
 	 */
 	public Valuable[] withdraw(double amount) {
-		List<Valuable> templist = new ArrayList<Valuable>(this.money.size());
-		double amountNeededToWithdraw = amount;
-		Valuable[] withdraw = null;
-		Comparator<Valuable> comp = new ValueComparator();
-		java.util.Collections.sort(this.money, comp);
-		
-		if ((amount <= 0) || (this.getBalance() < amount)) {
-			return null;
-		} else {
-			for (int x = (this.money.size() - 1); x >= 0; x--) {
-				double value = this.money.get(x).getValue();
-				if ((amountNeededToWithdraw - value) >= 0) {
-					amountNeededToWithdraw -= value;
-					templist.add(this.money.get(x));
-				}
-				if (amountNeededToWithdraw == 0) {
-					withdraw = new Valuable[templist.size()];
-					templist.toArray(withdraw);
-					for (Valuable j : templist) {
-						this.money.remove(j);
-					}
-					break;
-				}
-			}
-		}
-		if (amountNeededToWithdraw != 0) {
-			return null;
-		}
-		return withdraw;
+		return withdraw(new Money(amount,"Baht"));
 	}
 	
 	/**
