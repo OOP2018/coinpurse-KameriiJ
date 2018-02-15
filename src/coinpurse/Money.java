@@ -40,13 +40,10 @@ public class Money implements Valuable{
 		if(!this.getCurrency().equals(money.getCurrency())) {
 			String a = this.getCurrency().toLowerCase();
 			String b = money.getCurrency().toLowerCase();
-			if(a.compareTo(b) < 0) return -1;
-			else if(a.compareTo(b) > 0) return 1;
-			else return 0;
+			return a.compareTo(b);
 		}
 		else {
 			return Double.compare(this.getValue(), money.getValue());
 		}
 	}
-
 }
