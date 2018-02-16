@@ -54,7 +54,7 @@ public class MoneyUtil {
 	public static void main(String[]args) {
 		List<Valuable> cash = new ArrayList<Valuable>();
 		cash.add(new Coin(10, "Baht"));
-		cash.add(new Coin(200, "Coins"));
+		cash.add(new BankNote(200, "Baht"));
 		cash.add(new Coin(30, "Rupie"));
 		cash.add(new Coin(10, "Dollars"));
 		cash.add(new Coin(0.5, "Dollars"));
