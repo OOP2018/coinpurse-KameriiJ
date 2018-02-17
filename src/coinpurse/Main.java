@@ -5,7 +5,8 @@ import java.util.ResourceBundle;
 /**
  * A main class to create objects and connect objects together.
  * The user interface needs a reference to coin purse.
- * @author your name
+ * 
+ * @author Gunthee Tawewatmongkol
  */
 public class Main {
 
@@ -20,6 +21,10 @@ public class Main {
     		ui.run();	
     }
     
+    /**
+     * Write the name of the Factory class in a configuration file(.properties), 
+     * and read the class name, then create an object of that class.
+     */
     public static void init() {
     		ResourceBundle bundle = ResourceBundle.getBundle( "purse" );
     		String factoryclass = bundle.getString("moneyfactory2");

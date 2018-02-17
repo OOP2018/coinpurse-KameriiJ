@@ -1,7 +1,8 @@
 package coinpurse;
 
 /**
- * Interface for objects that have the value and currency. 
+ * Interface for objects that have the value and currency.
+ *  
  * @author Gunthee tawewatmongkol
  */
 public interface Valuable extends Comparable<Valuable>{

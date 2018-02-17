@@ -2,6 +2,7 @@ package coinpurse;
 
 /**
  * BankNote represents banknote(money) with a fixed value, currency, and unique serial number.
+ * 
  * @author Gunthee tawewatmongkol
  */
 public class BankNote extends Money {

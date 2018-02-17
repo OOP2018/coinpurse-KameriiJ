@@ -1,8 +1,18 @@
 package coinpurse;
 
+/**
+ * MoneyFactoryDemo class to create a MoneyFactory and call its methods
+ * and print results on the console.
+ * 
+ * @author Gunthee tawewatmongkol
+ */
 public class MoneyFactoryDemo {
 	private final static String[] values = {"0.05","0.25","1.0","2.0","20.0","100","1000", null};
 	
+	/**
+	 * Check MoneyFactory is a singleton
+	 * and all the methods work as specified.
+	 */
 	public static void main(String[]args) {
 		MoneyFactory factory = MoneyFactory.getInstance();
 		MoneyFactory factory2 = MoneyFactory.getInstance();
@@ -17,6 +27,10 @@ public class MoneyFactoryDemo {
 		testMoneyFactory(malayFact);
 	}
 	
+	/**
+	 * Create money object.
+	 * @param factory is instance to create money.
+	 */
 	public static void testMoneyFactory(MoneyFactory factory) {
 		for(String val : values) {
 			System.out.print("Create: ");

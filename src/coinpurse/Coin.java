@@ -2,6 +2,7 @@ package coinpurse;
 
 /**
  * Coin represents coinage (money) with a fixed value and currency.
+ * 
  * @author Gunthee tawewatmongkol
  */
 public class Coin extends Money {

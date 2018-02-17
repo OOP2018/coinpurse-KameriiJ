@@ -1,5 +1,9 @@
 package coinpurse;
-
+/**
+ * Money fixed value and currency.
+ * 
+ * @author Gunthee tawewatmongkol
+ */
 public class Money implements Valuable{
 
 	protected double value;
