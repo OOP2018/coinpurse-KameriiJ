@@ -1,18 +1,34 @@
 package coinpurse;
 
 public class MoneyFactoryDemo {
+	private final static String[] values = {"0.05","0.25","1.0","2.0","20.0","100","1000", null};
+	
 	public static void main(String[]args) {
 		MoneyFactory factory = MoneyFactory.getInstance();
-		Valuable m = factory.createMoney( 5 );
-		System.out.println(m.toString());
-		Valuable m2 = factory.createMoney("1000.0");
-		System.out.println(m2.toString());
-		
-		MoneyFactory.setFactory(new MalayMoneyFactory());
 		MoneyFactory factory2 = MoneyFactory.getInstance();
-		m = factory2.createMoney( 5 );
-		System.out.println(m.toString());
-		Valuable m3 = factory2.createMoney( 0.05 );
-		System.out.println(m3.toString());
+		System.out.print("Test Singleton: ");
+		System.out.println(factory == factory2);
+		System.out.println();
+		testMoneyFactory(factory);
+		System.out.println("\nSet factory to Malaysia factory!!");
+		MoneyFactory.setFactory(new MalayMoneyFactory());
+		MoneyFactory malayFact = MoneyFactory.getInstance();
+		testMoneyFactory(malayFact);
+	}
+	
+	public static void testMoneyFactory(MoneyFactory factory) {
+		for(String val : values) {
+			System.out.print("Create: ");
+			try {
+				Valuable v = factory.createMoney(val);
+				System.out.println(v.toString());
+			}catch(IllegalArgumentException ex) {
+				System.out.println("IllegalArgumentException:" + ex.getMessage());
+				continue;
+			}catch(NullPointerException ex) {
+				System.out.println("IllegalArgumentException: " + ex.getMessage());
+				continue;
+			}
+		}
 	}
 }

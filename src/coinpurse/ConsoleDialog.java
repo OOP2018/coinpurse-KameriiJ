@@ -133,7 +133,13 @@ public class ConsoleDialog {
     
     /** Make a Coin (or BankNote or whatever) using requested value. */
     private Money makeMoney(double value) {
-    	return new Coin(value, CURRENCY);
+    		MoneyFactory moneyFactory = MoneyFactory.getInstance();
+    		try {
+    			return (Money) moneyFactory.createMoney( value );
+    		} catch (IllegalArgumentException ex) {
+    			System.out.println("Sorry, "+" is not a valid amount.");
+    		}
+    		return null;
     }
 
 }
