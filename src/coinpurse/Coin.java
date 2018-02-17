@@ -16,11 +16,13 @@ public class Coin extends Money {
 	
 	@Override
 	public String toString() {
+		double value = this.getValue();
+		String currency = this.getCurrency();
 		if(this.getCurrency().equals("Ringgit")) {
-			this.currency = "Sen";
-			this.value *= 100;
+			currency = "Sen";
+			value *= 100;
 		}
-		return String.format("%.2f-%s %s", this.getValue(), this.getCurrency(), "coin");
+		return String.format("%.2f-%s %s", value, currency, "coin");
 	}
 	
 }

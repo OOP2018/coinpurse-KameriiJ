@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MalayMoneyFactory extends MoneyFactory{
-	private final String CURRENCY = "Ringgit";
+	public final static String CURRENCY = "Ringgit";
 	private final List<Double> money = 
 			new ArrayList<>(Arrays.asList(0.05, 0.10, 0.20, 0.50, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0));
 	
@@ -17,5 +17,9 @@ public class MalayMoneyFactory extends MoneyFactory{
 		}
 		if (value >= 1) return new BankNote(value,CURRENCY);
 		else return new Coin(value, CURRENCY);
+	}
+	
+	public String getCurrency() {
+		return CURRENCY;
 	}
 }

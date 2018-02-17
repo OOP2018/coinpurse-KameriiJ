@@ -1,7 +1,6 @@
 package coinpurse;
 
 public abstract class MoneyFactory {
-	
 	private static MoneyFactory instance = null;
 	
 	protected MoneyFactory() {
@@ -31,4 +30,6 @@ public abstract class MoneyFactory {
 	public static void setFactory(MoneyFactory f) {
 		instance = f;
 	}
+	
+	public abstract String getCurrency() ;
 }
