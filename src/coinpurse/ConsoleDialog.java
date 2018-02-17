@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class ConsoleDialog {
 	// default currency for this dialog
-	public static String CURRENCY = MoneyFactory.getInstance().getCurrency();
+	public final static String CURRENCY = MoneyFactory.getInstance().getCurrency();
     // use a single java.util.Scanner object for reading all input
     private static Scanner console = new Scanner( System.in );
     // Long prompt shown the first time
