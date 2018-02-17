@@ -81,19 +81,15 @@ public class ConsoleDialog {
         // parse input line into numbers
         Scanner scanline = new Scanner(inline);
         while( scanline.hasNextDouble() ) {
+        		boolean ok = false;
             double value = scanline.nextDouble();
-            if(value >= 20) {
-            	 	BankNote bankNote = new BankNote(value, CURRENCY);
-            	 	System.out.printf("Deposit %s... ", bankNote.toString() );
-            		boolean ok = purse.insert(bankNote);
-            		System.out.println( (ok? "ok" : "FAILED") );
+            Money money = makeMoney(value);
+            System.out.print("Deposit ");
+            if(money != null) {
+            		System.out.printf("%s... ", money.toString() );
+            		ok = purse.insert(money);
             }
-            else {
-            		Money coin = makeMoney(value);
-            		System.out.printf("Deposit %s... ", coin.toString() );
-            		boolean ok = purse.insert(coin);
-            		System.out.println( (ok? "ok" : "FAILED") );
-            }
+            	System.out.println( (ok? "ok" : "FAILED") );
         }
         if ( scanline.hasNext() )
             System.out.println("Invalid input: "+scanline.next() );

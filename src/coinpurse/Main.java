@@ -22,7 +22,7 @@ public class Main {
     
     public static void init() {
     		ResourceBundle bundle = ResourceBundle.getBundle( "purse" );
-    		String factoryclass = bundle.getString("moneyfactory");
+    		String factoryclass = bundle.getString("moneyfactory2");
 		if (factoryclass == null) factoryclass = "coinpurse.ThaiMoneyFactory";
 		MoneyFactory factory = null;
 		try {
