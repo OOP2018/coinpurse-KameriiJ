@@ -13,7 +13,7 @@ public class MalayMoneyFactory extends MoneyFactory{
 	public Valuable createMoney(double value) throws IllegalArgumentException{
 		if(!money.contains(value)) {
 			System.out.println(value + " isn't Malaysia money.");
-			throw new IllegalArgumentException("This value connot be Malaysia coin or banknote.");
+			throw new IllegalArgumentException("This value cannot be Malaysia coin or banknote.");
 		}
 		if (value >= 1) return new BankNote(value,CURRENCY);
 		else return new Coin(value, CURRENCY);

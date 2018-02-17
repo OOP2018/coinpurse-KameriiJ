@@ -23,7 +23,7 @@ public abstract class MoneyFactory {
 	        System.out.println(ex.getMessage());
 	    } catch (NullPointerException ex) {
 	    		System.out.println("There is no value.");
-	    		throw new NullPointerException();
+	    		throw new NullPointerException("The value is null.");
 		}
 	    return createMoney( valueDb );
 	}

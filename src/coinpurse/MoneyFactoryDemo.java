@@ -9,6 +9,7 @@ public class MoneyFactoryDemo {
 		System.out.print("Test Singleton: ");
 		System.out.println(factory == factory2);
 		System.out.println();
+		System.out.println("\nSet default factory to Thai factory!!");
 		testMoneyFactory(factory);
 		System.out.println("\nSet factory to Malaysia factory!!");
 		MoneyFactory.setFactory(new MalayMoneyFactory());

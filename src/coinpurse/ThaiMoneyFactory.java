@@ -13,7 +13,7 @@ public class ThaiMoneyFactory extends MoneyFactory{
 	public Valuable createMoney(double value) throws IllegalArgumentException{
 		if(!money.contains(value)) {
 			System.out.println(value + " isn't Thai money.");
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("This value cannot be Thai coin or banknote.");
 		}
 		if (value >= 20) return new BankNote(value,CURRENCY);
 		else return new Coin(value, CURRENCY);
