@@ -35,9 +35,8 @@ public abstract class MoneyFactory {
 	    try {
 	       valueDb = Double.parseDouble( value );
 	    } catch (IllegalArgumentException ex) {
-	        System.out.println(ex.getMessage());
+	    		throw new IllegalArgumentException(ex.getMessage());
 	    } catch (NullPointerException ex) {
-	    		System.out.println("There is no value.");
 	    		throw new NullPointerException("The value is null.");
 		}
 	    return createMoney( valueDb );

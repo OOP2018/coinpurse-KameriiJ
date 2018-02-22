@@ -21,8 +21,7 @@ public class MalayMoneyFactory extends MoneyFactory{
 	@Override
 	public Valuable createMoney(double value) throws IllegalArgumentException{
 		if(!money.contains(value)) {
-			System.out.println(value + " cannot be Malaysia coin or banknote.");
-			throw new IllegalArgumentException("invalid value");
+			throw new IllegalArgumentException(value + " cannot be Malaysia coin or banknote.");
 		}
 		if (value >= 1) return new BankNote(value,CURRENCY);
 		else return new Coin(value, CURRENCY);

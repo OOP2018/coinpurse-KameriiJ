@@ -38,9 +38,11 @@ public class MoneyFactoryDemo {
 				Valuable v = factory.createMoney(val);
 				System.out.println(v.toString());
 			}catch(IllegalArgumentException ex) {
+				System.out.println("Invalid value");
 				System.out.println("IllegalArgumentException:" + ex.getMessage());
 				continue;
 			}catch(NullPointerException ex) {
+				System.out.println("There is no value.");
 				System.out.println("IllegalArgumentException: " + ex.getMessage());
 				continue;
 			}

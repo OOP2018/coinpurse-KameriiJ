@@ -21,8 +21,7 @@ public class ThaiMoneyFactory extends MoneyFactory{
 	@Override
 	public Valuable createMoney(double value) throws IllegalArgumentException{
 		if(!money.contains(value)) {
-			System.out.println(value + " cannot be Thai coin or banknote.");
-			throw new IllegalArgumentException("invalid value");
+			throw new IllegalArgumentException(value + " cannot be Thai coin or banknote.");
 		}
 		if (value >= 20) return new BankNote(value,CURRENCY);
 		else return new Coin(value, CURRENCY);
