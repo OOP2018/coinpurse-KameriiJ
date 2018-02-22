@@ -10,6 +10,7 @@ import java.util.List;
  * @author tawewatmongkol
  */
 public class ThaiMoneyFactory extends MoneyFactory{
+	private static long nextSerialNumber = 1000000L;
 	private final static String CURRENCY = "Baht";
 	private final List<Double> money = 
 			new ArrayList<>(Arrays.asList(1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 500.0, 1000.0));
@@ -23,7 +24,10 @@ public class ThaiMoneyFactory extends MoneyFactory{
 		if(!money.contains(value)) {
 			throw new IllegalArgumentException(value + " cannot be Thai coin or banknote.");
 		}
-		if (value >= 20) return new BankNote(value,CURRENCY);
+		if (value >= 20) {
+			nextSerialNumber++;
+			return new BankNote(value, CURRENCY, nextSerialNumber);
+		}
 		else return new Coin(value, CURRENCY);
 	}
 	
