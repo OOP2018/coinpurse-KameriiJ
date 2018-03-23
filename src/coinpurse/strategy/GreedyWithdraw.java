@@ -9,6 +9,10 @@ import coinpurse.ValueComparator;
 
 public class GreedyWithdraw implements WithdrawStrategy{
 	
+	/**
+	 * Get the total value of all items in the list
+	 * @return the total value of items in the list.
+	 */
 	public double getBalance(List<Valuable> money) {
 		double totalValue = 0;
 		for (Valuable x : money) {
@@ -17,6 +21,16 @@ public class GreedyWithdraw implements WithdrawStrategy{
 		return totalValue;
 	}
 	
+	/**
+	 * Withdraw the requested amount of money. Return a new temporarylist of Valuable items withdrawn
+	 * from list, or return null if cannot withdraw the amount requested.
+	 * Using only items that have the same currency as the parameter.
+	 * 
+	 * @param amount is the object of amount to withdraw
+	 * @param money is the list that represent purse.
+	 * @return array of Valuable objects for money withdrawn, or null if cannot withdraw
+	 *         requested amount.
+	 */
 	@Override
 	public List<Valuable> withdraw(Valuable amount, List<Valuable> money) {
 		List<Valuable> templist = new ArrayList<Valuable>(money.size());
