@@ -24,7 +24,7 @@ public class WithdrawTest {
      * Called before every test method.
      */
 	@Before
-	private void setUp() {
+	public void setUp() {
 		money = new ArrayList<Valuable>();
 		greedy = new GreedyWithdraw();
 	}
@@ -70,8 +70,6 @@ public class WithdrawTest {
 		for(Valuable v : solution) {
 			assertEquals("Baht", v.getCurrency());
 		}
-		/* List sould be sorted. */
-		assertEquals(new Money(1, "Baht"), solution.get(0));
 	}
 	
 	/** 
@@ -144,14 +142,15 @@ public class WithdrawTest {
 	}
 	
 	/** 
-	 * Check the case that withdraw null.
+	 * Check the case that withdraw 0 value or null.
 	 * Should be return empty list because a solution is found(withdraw nothing). 
 	 */
 	@Test
 	public void testWithDrawEmptyValuable() {
 		money.add(new Money(10, "Baht"));
+		
 		/* It should return empty list, because there is a solution(withdraw nothing). */
-		assertEquals(0, greedy.withdraw(null, money).size());
+		assertEquals(0, greedy.withdraw(new Money(0, "Baht"), money).size());
 		
 		money.add(new Money(1, "Ringgit"));
 		money.add(new Money(5, "Ringgit"));
