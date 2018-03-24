@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import coinpurse.strategy.GreedyWithdraw;
+import coinpurse.strategy.WithdrawStrategy;
+
 /**
  * A coin purse contains Valuable items(coins or banknotes). You can insert Valuable item, withdraw money, check the
  * balance, and check if the purse is full.
@@ -13,6 +16,7 @@ import java.util.List;
 public class Purse {
 	/** Collection of objects in the purse. */
 	private List<Valuable> money;
+	private WithdrawStrategy strategy;
 
 	/**
 	 * Capacity is maximum number of items the purse can hold. Capacity is set when
@@ -28,6 +32,12 @@ public class Purse {
 	public Purse(int capacity) {
 		this.capacity = capacity;
 		this.money = new ArrayList<Valuable>(this.capacity);
+		setWithdrawStrategy();
+	}
+
+	/** Set WithdrawStrategy */
+	public void setWithdrawStrategy() {
+		strategy = new GreedyWithdraw();
 	}
 
 	/**
@@ -111,35 +121,13 @@ public class Purse {
 	 *         requested amount.
 	 */
 	public Valuable[ ] withdraw(Valuable amount) {
-		List<Valuable> templist = new ArrayList<Valuable>(this.money.size());
-		double amountNeededToWithdraw = amount.getValue();
 		Valuable[] withdraw = null;
-		Comparator<Valuable> comp = new ValueComparator();
-		java.util.Collections.sort(this.money, comp);
-		
-		if ((amount.getValue() <= 0) || (this.getBalance() < amount.getValue()) || amount == null) {
-			return null;
-		} else {
-			for (int x = (this.money.size() - 1); x >= 0; x--) {
-				if(this.money.get(x).getCurrency().equalsIgnoreCase(amount.getCurrency())) {
-					double value = this.money.get(x).getValue();
-					if ((amountNeededToWithdraw - value) >= 0) {
-						amountNeededToWithdraw -= value;
-						templist.add(this.money.get(x));
-					}
-					if (amountNeededToWithdraw == 0) {
-						withdraw = new Valuable[templist.size()];
-						templist.toArray(withdraw);
-						for (Valuable j : templist) {
-							this.money.remove(j);
-						}
-						break;
-					}
-				}
-			}
-		}
-		if (amountNeededToWithdraw != 0) {
-			return null;
+		List<Valuable> templist = strategy.withdraw(amount, this.money);
+		if (templist == null) return null;
+		withdraw = new Valuable[templist.size()];
+		templist.toArray(withdraw);
+		for (Valuable j : templist) {
+			this.money.remove(j);
 		}
 		return withdraw;
 	}
