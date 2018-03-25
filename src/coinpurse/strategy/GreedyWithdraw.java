@@ -35,8 +35,8 @@ public class GreedyWithdraw implements WithdrawStrategy{
 	public List<Valuable> withdraw(Valuable amount, List<Valuable> money) {
 		List<Valuable> templist = new ArrayList<Valuable>(money.size());
 		
-		if ((amount == null) || (amount.getValue() == 0)) return templist;
-		if ((amount.getValue() < 0) || (getBalance(money) < amount.getValue())) return null;
+		if ((amount == null) || (amount.getValue() == 0) || (amount.getValue() < 0) || 
+			(getBalance(money) < amount.getValue())) return null;
 		
 		Comparator<Valuable> comp = new ValueComparator();
 		java.util.Collections.sort(money, comp);
