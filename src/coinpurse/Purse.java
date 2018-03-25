@@ -142,5 +142,4 @@ public class Purse {
 		if (this.money.size() == 1) c = "item";
 		return String.format("%d %s with value %.1f", this.count(), c, this.getBalance());
 	}
-
 }
