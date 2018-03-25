@@ -18,6 +18,7 @@ import coinpurse.Valuable;
 public class WithdrawTest {
 	private List<Valuable> money;
 	private GreedyWithdraw greedy;
+//	private RecursiveWithdraw greedy;
 	
 	 /**
      * Sets up the test fixture.
@@ -27,6 +28,7 @@ public class WithdrawTest {
 	public void setUp() {
 		money = new ArrayList<Valuable>();
 		greedy = new GreedyWithdraw();
+//		greedy = new RecursiveWithdraw();
 	}
 	
 	/** Check if Amount of items in money before withdraw and after withdraw are equals. */
@@ -63,7 +65,7 @@ public class WithdrawTest {
 		money.add(new Money(5, "Baht"));
 		Valuable val = new Money(31, "Baht");
 		List<Valuable> solution = greedy.withdraw(val ,money);
-		
+	
 		/* It should return list containing 1, 10 Baht coins and 20 Baht Banknote. */
 		assertEquals(3, solution.size());
 		/* Every items should have "Baht" currency. */
@@ -143,30 +145,18 @@ public class WithdrawTest {
 	
 	/** 
 	 * Check the case that withdraw 0 value or null.
-	 * Should be return empty list because a solution is found(withdraw nothing). 
+	 * Should be return null(withdraw nothing). 
 	 */
 	@Test
 	public void testWithDrawEmptyValuable() {
 		money.add(new Money(10, "Baht"));
 		
 		/* It should return empty list, because there is a solution(withdraw nothing). */
-		assertEquals(0, greedy.withdraw(new Money(0, "Baht"), money).size());
+		assertNull(greedy.withdraw(new Money(0, "Baht"), money));
 		
 		money.add(new Money(1, "Ringgit"));
 		money.add(new Money(5, "Ringgit"));
 		/* It should return empty list, because there is a solution(withdraw nothing). */
-		assertEquals(0, greedy.withdraw(null, money).size());
+		assertNull(greedy.withdraw(null, money));
 	}
-	
-//	@Test
-	public void testWithDrawEveryThing() {
-		money.add(new Money(10, "Baht"));
-		money.add(new Money(20, "Baht"));
-		money.add(new Money(1, "Baht"));
-		money.add(new Money(1, "Ringgit"));
-		money.add(new Money(5, "Ringgit"));
-		money.add(new Money(5, "Baht"));
-		int listSize = money.size();
-	}
-
 }
