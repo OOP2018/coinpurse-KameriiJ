@@ -14,16 +14,13 @@ public class RecursiveWithdraw implements WithdrawStrategy{
 		Comparator<Valuable> comp = new ValueComparator();
 		Collections.sort(money, comp);
 		Collections.reverse(money);
-		
 		return helper(money, templist, amount);
 	}
 	
 	public static List<Valuable> helper(List<Valuable> list, List<Valuable> templist, Valuable amount) {
 		Valuable check; double target; String currency;
 		try { 
-			check = list.get(0);
-			target = amount.getValue();
-			currency = amount.getCurrency();
+			check = list.get(0); target = amount.getValue(); currency = amount.getCurrency();
 		} catch (Exception ex) {
 			return null; 
 		}
